@@ -1,0 +1,167 @@
+PAPEL v.3.5
+===========
+
+Índice:
+1. Introdução
+2. Conteúdo do pacote
+3. Representação das relações
+4. Visão quantitativa
+5. Principais diferenças em relação:
+	5.1 À versão 2.0
+	5.2 À versão 3.0
+6. Dados em relação à avaliação
+7. Agradecimentos
+
+
+1. Introdução
+-------------
+Este recurso lexical para o português, o PAPEL (Palavras Associadas Porto Editora - Linguateca) foi construído através da extracção automática de relações semânticas expressas nas definições do Dicionário da Língua Portuguesa da Porto Editora.
+
+O trabalho inicial foi realizado por Hugo Gonçalo Oliveira, orientado por Diana Santos e Paulo Gomes.
+
+Material adicional para a compreensão do recurso encontra-se disponível a partir do URL http://www.linguateca.pt/PAPEL/
+
+Desde 2010, o PAPEL é mantido pela mesma equipa, numa colaboração entre a Linguateca e o CISUC.
+
+No âmbito do projecto do CISUC, Onto.PT (http://ontopt.dei.uc.pt), as gramáticas do PAPEL foram já utilizadas para extrair relações de outros dicionários, dando origem à rede CARTÃO.
+
+
+2. Conteúdo do pacote
+---------------------
+Deste pacote fazem parte as relações (entre palavras) extraídas do dicionário com o auxílio do analisador sintáctico PEN e gramáticas desenvolvidas para esse fim.
+
+Após a extração, os triplos extraídos passam pelas seguintes fases adicionais de processamento:
+
+	(i) normalização para o tipo convencionado como directo (descrito no ficheiro definicao_relacoes.xml);
+
+	(ii) ajuste de acordo com a classe gramatical dos argumentos, baseando-se na informação no dicionário. Quando o dicionário não encontra a palavra, o ajuste baseia-se em informação obtida através do OpenNLP. Quando possível, os argumentos são lematizados;
+
+	(iii) remoção de relações repetidas e com argumentos não desejados.
+
+As relações encontram-se ainda separadas por grupo em ficheiros com o nome "relacoes_final_GRUPO.txt".
+
+
+3. Representação das relações
+-----------------------------
+Os ficheiros de relações contêm uma relação (triplo) por linha, representada na forma:
+
+palavra1 RELACAO palavra2
+
+A partir da versão 2.0 foram também incluídos os campos registo, domínio e variante, quando existentes no dicionário, a seguir a cada relação, da seguinte forma:
+
+palavra1 RELACAO palavra2 :: registo;domínio;variante
+
+Quando algum campo não existe, fica em branco, por exemplo: fís.;ant.; onde não existe domínio atribuído.
+O conteúdo dos campos foi retirado integralmente do dicionário, ou seja, não sofreu qualquer modificação.
+
+O ficheiro definicao_relacoes.xml inclui as propriedades das relações extraídas, organizadas em grupos, e sub-relações, definidas pela categoria gramatical dos argumentos.
+
+
+4. Visão quantitativa
+---------------------
+As quantidade de termos por categoria e relações por tipo nesta versão do PAPEL encontram-se no ficheiro quantidades_versao.txt, também incluído neste pacote.
+
+
+5.1 Principais diferenças em relação à versão 2.0
+-------------------------------------------------
+- Alteração da codificação de ISO-8859-1 para UTF-8
+
+- Substituição do ficheiro definicao_relacoes.dat por o definicao_relacoes.xml
+
+- Separação de mais dois tipos de relações de meronímia. Além de PARTE e MEMBRO, passa a existir CONTIDO e MATERIAL
+(ainda que por vezes, a ambiguidade impeça uma clara divisão nestes tipos)
+	nome CONTIDO_EM nome (padrão "que contém")
+	nome CONTIDO_EM_ALGO_COM_PROPRIEDADE adj
+	nome MATERIAL_DE nome (padrões "estrutura/porção de" e "feito de")
+
+- Alteração de nome nas relações de finalidade:
+	* FINALIDADE_DE passou a FAZ_SE_COM
+	* ACCAO_FINALIDADE_DE passou a FINALIDADE_DE
+	* FINALIDADE_DE_ALGO_COM_PROPRIEDADE passou a FAZ_SE_COM_ALGO_COM_PROPRIEDADE
+	* ACCAO_FINALIDADE_DE_ALGO_COM_PROPRIEDADE passou a FINALIDADE_DE_ALGO_COM_PROPRIEDADE
+
+- Alteração no nome das relações referente/propriedade:
+	* PROPRIEDADE_DE_ALGO_REFERENTE_A passa a DIZ_SE_SOBRE
+	* PROPRIEDADE_DO_QUE passa a DIZ_SE_DO_QUE
+
+- Novas relações entre substantivos:
+	nome TEM_QUALIDADE nome (padrão "qualidade de")
+	nome TEM_ESTADO nome (padrão "estado de")
+
+- Novas relações entre adjectivos e substantivos:
+	adj DEVIDO_A_QUALIDADE nome (padrão "qualidade de/do quem/que é")
+	adj DEVIDO_A_ESTADO nome (padrão "estado de/do quem/que é")
+
+- Novas relações entre adjectivos:
+	adj ANTONIMO_ADJ_DE adj (padrão "que não é")
+
+- Separação da relação MANEIRA_COM em:
+	adv MANEIRA_COM nome
+	adv MANEIRA_COM_PROPRIEDADE adj
+
+- Alteração do conjunto de palavras que, por não fornecerem informação suficiente, não devem ser consideradas hiperónimos:
+	Deixa de haver relações HIPERONIMO_DE em que 'acto', 'efeito', 'acção', 'estado', 'qualidade', 'divisão' é o hiperónimo
+
+- Alteração do separador entre triplos e campos registo, domínio e variante:
+	era uma "tab" e passou a " :: "
+
+- Utilização da plataforma OpenNLP (http://incubator.apache.org/opennlp/) e dos modelos para português no ajuste das relações.
+
+- Deixou de ser feita a distinção entre maiúsculas e minúsculas. Todos os termos estão em minúscula.
+
+5.2 Principais diferenças em relação à versão 3.2
+-------------------------------------------------
+- Deixa de ser disponibilizado o ficheiro relacoes_brutas.txt, que continha as relações extraídas antes dos passos adicionais de processamento.
+
+- Várias melhorias nas regras de extração, após observação dos resultados da avaliação manual, como por exemplo:
+	* Consideração de alguns verbos transitivos nas relações FINALIDADE_DE, ACCAO_QUE_CAUSA e DIZ_SE_DO_QUE (e.g. "tornar_X", "evitar_X", "conter_X")
+	* Padrão "relativo a quem" (relação DIZ_SE_DO_QUE)
+	* Utilização da grafia 'ação' para a extracção de ACCAO_QUE_CAUSA
+	* Padrão "acto ou efeito de quem é X" para a relação PROPRIEDADE_DE_ALGO_QUE_CAUSA
+	* Padrão "para usar em X" para a relação FAZ_SE_COM
+	* Padrão "para poder X" para a relação FINALIDADE_DE
+	* Padrão "para obtenção de X" para a relação PRODUTOR_DE
+	* Padrão "para esse efeito" deixa de extrair alguma coisa
+	* Argumento "reino" em relações MEMBRO_DE passa a "reino_X" (e.g. "reino_monera")
+	* Argumento "fins" em relações FAZ_SE_COM passa a "fins_X" ou "fins_de_X" (e.g. "fins_ornamentais", "fins_de_caridade")
+
+- Argumento "quem" é transformado em "pessoa"
+
+- Algumas correcções no tratamento das relações, mais propriamente relacionadas com a rejeição e com a lematização de alguns argumentos.
+
+
+6. Dados em relação à avaliação
+-------------------------------
+No âmbito do projecto Onto.PT procedeu-se à avaliação manual de um conjunto de relações do PAPEL 3.0.
+Para tal, foram seleccionados aleatoriamente 100 triplos para cada um dos 7 tipos de relação avaliados.
+Cada triplo foi depois avaliado, de forma independente, por duas pessoas.
+Apresentamos a precisão dos triplos por tipo e avaliador (P1 e P2), e ainda a concordância K entre avaliadores (1).
+
+SINONIMO_N_DE	P1=100%	P2=99% K=0.66
+SINONIMO_V_DE	P1=100%	P2=98% K=0.68
+HIPERONIMO_DE	P1=100%	P2=99% K=0.66
+MEMBRO_DE	P1=93%/96%	P2=76%/93% K=0.32/0.55 (2)
+ACCAO_QUE_CAUSA	P1=95%	P2=90% K=0.60
+FINALIDADE_DE	P1=69%	P2=99% K=0.48
+DIZ_SE_DO_QUE	P1=72%	P2=78% K=0.56
+
+(1) O coeficiente K foi medido considerando também a avaliação de mais 200 triplos do mesmo tipo de relação, extraídos a partir de outros dicionários 
+(2) Para MEMBRO_DE, foi dada a possibilidade ao avaliador de indicar se a relação se tratava de outro tipo de meronímia, que não MEMBRO_DE. Os segundos valores apresentados consideram como correctos as relações assim classificadas.
+
+7. Agradecimentos
+-----------------
+O trabalho de que resultaram as primeiras versões do PAPEL foi realizado no âmbito da Linguateca, entre 1 de Setembro de 2007 a 31 de Dezembro de 2008.
+Alterações relacionadas com a versão 2.0 foram realizadas entre Dezembro de 2009 e Janeiro de 2010.
+Alterações relacionadas com a versão 3.0 foram realizadas entre Fevereiro e Dezembro de 2011 e com a versão 3.5 entre Janeiro e Agosto de 2013, numa colaboração entre a Linguateca e o CISUC.
+
+A Linguateca tem sido financiada ao longo da sua existência pelo governo português, pela Fundação para a Computação Científica Nacional (FCCN), pela Fundação para a Ciência e a Tecnologia (FCT), pela UMIC-Agência para a Sociedade do Conhecimento, e pela União Europeia, através nomeadamente dos projetos POSI/PLP/43931/2001 e POSC 339/1.3/C/NAC.
+Hugo Gonçalo Oliveira foi, entre Janeiro de 2009 e Dezembro de 2012, financiado pela FCT, bolsa SFRH/BD/44955/2008.
+
+O trabalho do PAPEL continuou na senda do trabalho inicial do Nuno Seco por ocasião da sua bolsa no âmbito da Linguateca, e estamos portanto gratos ao Nuno Seco pela informação, bibliografia, ferramentas, e ideias iniciais relativas ao PAPEL, assim como por todas as discussões e opiniões por ele transmitidas no decurso do projecto.
+
+Agradecemos ao Núcleo de Investigação e Desenvolvimento da Porto Editora, que nos prestou o apoio necessário do lado da Porto Editora.
+
+Agradecemos ainda à Cláudia Freitas pela sua participação na discussão de algumas decisões para o PAPEL 3.0
+
+----------
+Data da última modificação deste texto: 23 de Agosto de 2012.

@@ -1,0 +1,181 @@
+Onto.PT v.0.6
+=============
+
+1. Introdução
+2. Construção do Onto.PT
+3. Caracterização da versão actual
+4. Avaliação do Onto.PT (v.0.3.5)
+5. Licença
+6. Notas adicionais
+
+
+
+1. Introdução
+-------------
+
+O Onto.PT é uma ontologia lexical para o português, criada de forma automática e estruturada de forma semelhante à WordNet de Princeton.
+
+Assim, é um recurso constituído essencialmente por synsets -- grupos de palavras sinónimas -- e relações entre eles.
+
+A principal diferença em relação à WordNet, criada manualmente, é que o Onto.PT é construída de forma automática.
+
+
+2. Construção do Onto.PT
+------------------------
+
+As relações do Onto.PT foram extraídas automaticamente, a partir de três dicionários electrónicos:
+- Dicionário PRO da Língua Portuguesa 2005, da Porto Editora (indiretamente, através do PAPEL)
+- Dicionário Aberto (http://www.dicionario-aberto.net/)
+- Wikcionário.PT (http://pt.wiktionary.org -- dump de 25 de Julho de 2013)
+
+Na extracção foram utilizadas as gramáticas criadas para a construção do PAPEL (http://www.linguateca.pt/PAPEL/), versão 3.5.
+
+As relações anteriores foram juntas aos synsets de três tesauros abertos e criados manualmente:
+- TeP (http://www.nilc.icmc.usp.br/tep2/)
+- OpenWordNet-PT (https://github.com/arademaker/wordnet-br)
+- OpenThesaurus.PT (http://openthesaurus.caixamagica.pt/)
+
+A integração dos recursos foi feita junção foi feita nos seguintes passos:
+	(a) Junção dos synsets do TeP e do OpenWordNet-PT num único tesauro;
+	(b) Quando possível, associação das relações de sinonímia extraídas aos synsets;
+	(c) Identificação agrupamentos (clusters), que representam novos synsets, nas restantes relações de sinonímia;
+	(d) Associação das relações de outros tipos a synsets existentes, através da selecção automática dos synsets que melhor se adequam aos seus argumentos;
+	(e) Atribuição de definições do Dicionário Aberto e do Wikcionário.PT aos synsets, com base na sua intersecção com os synsets relacionados.
+
+
+3. Caracterização do Onto.PT v.0.6
+----------------------------------
+
+A versão actual do Onto.PT é disponibilizada através de um modelo RDF, baseado no esquema da WordNet RDF/OWL Basic (http://www.w3.org/2006/03/wn/wn20/).
+É possível descarregá-la nas notações RDF-XML e também N3, normalmente utilizadas para representar informação através de triplos.
+
+O Onto.PT v.0.6 inclui 156.623 formas lexicais únicas, organizadas em 117.450 synsets.
+Há uma classe para cada tipo de synset, de acordo com a sua categoria gramatical, com a seguinte distribuição:
+- NomeSynset (67.873 instâncias)
+- VerboSynset (26.451 instâncias)
+- AdjectivoSynset (20.760 instâncias)
+- AdverbioSynset (2.366 instâncias)
+
+Um total de 46.328 synsets vem acompanhado de uma definição, atribuída automaticamente.
+
+Os synsets relacionam-se através de 341.506 relações (174.615 se consideradas apenas relações diretas), cujos tipos foram definidos no PAPEL 3.0.
+As instâncias de relações distribuem-se da seguinte forma:
+
+	HIPERONIMIA
+		hiperonimoDe: 79425
+	PARTE
+		parteDe: 3782
+		parteDeAlgoComPropriedade: 4922
+		propriedadeDeAlgoParteDe: 101
+	MEMBRO
+		membroDe: 5957
+		membroDeAlgoComPropriedade: 111
+		propriedadeDeAlgoMembroDe: 922
+	CONTIDO
+		contidoEm: 365
+		contidoEmAlgoComPropriedade: 272
+	MATERIAL
+		materialDe: 879
+	LOCAL
+		localOrigemDe: 1458
+	CAUSA
+		causadorDe: 1396
+		causadorDeAlgoComPropriedade: 30
+		propriedadeDeAlgoQueCausa: 667
+		accaoQueCausa: 8168
+		causadorDaAccao: 84
+	PRODUTOR
+		produtorDe: 1662
+		propriedadeDeAlgoProdutorDe: 463
+		produtorDeAlgoComPropriedade: 80
+	FINALIDADE
+		fazSeCom: 6787
+		fazSeComAlgoComPropriedade: 77
+		finalidadeDe: 8507
+		finalidadeDeAlgoComPropriedade: 338
+	QUALIDADE
+		devidoAQualidade: 1118
+		temQualidade: 977
+	ESTADO
+		devidoAEstado: 197
+		temEstado: 334
+	ANTONIMIA
+		antonimoNDe: 2560
+		antonimoVDe: 1934
+		antonimoAdjDe: 3096
+		antonimoAdvDe: 134
+	REFERENTE
+		dizSeSobre: 9769
+		dizSeDoQue: 24131
+	MANEIRA
+		maneiraPorMeioDe: 1976
+		maneiraComPropriedade: 1675
+	MANEIRA_SEM
+		maneiraSemAccao: 20
+		maneiraSem: 231
+
+
+4. Avaliação do Onto.PT (v.0.3.5)
+---------------------------------
+
+O Onto.PT é um recurso em desenvolvimento.
+A sua criação é feita de forma automática e, como tal, não é um recurso 100% confiável.
+Referimos aqui alguns dados relativos à sua avaliação, que vem sendo realizada nos últimos meses e não se encontra terminada.
+Alguns dos problemas detectados nestas avaliações foram entretanto corrigidos.
+
+Precisão de relações (entre palavras) extraídas de dicionários, utilizando as gramáticas do PAPEL 3.0:
+- n sinónimo-de n: 99% (amostra 300 triplos)
+- v sinónimo-de v: 97-98% (amostra 300 triplos)
+- n hiperónimo-de n: 88%-90% (amostra 300 triplos)
+- v causador-de n: 89-90% (amostra 300 triplos)
+- v finalidade-de n: 73-74% (amostra 300 triplos)
+- adj diz-se-do-que: 71-77% (amostra 300 triplos)
+
+Precisão da associação de relações de sinonímia a synsets do TeP (amostra = 355 triplos entre substantivos): 76-81%
+Precisão de synsets descobertos (amostra = 330 synsets): 89% (substantivos), 83-89% (verbos), e 94-95% (adjectivos)
+
+Precisão da integração de relações:
+- hiperónimoDe: 60,6% (amostra = 210 triplos)
+- parteDe/membroDe: 63,3% (amostra = 175 triplos)
+- fazSeCom: 63,4% (amostra = 67 triplos)
+
+Precisão das relações do Onto.PT v.0.3.5:
+- hiperonimoDe: 65% (amostra 300 triplos)
+- Outras: 78-82% (amostra 300 triplos)
+
+
+5. Licença
+----------
+
+O Onto.PT é disponibilizado pela Universidade de Coimbra, através de uma licença Creative Commons Attribution 3.0 Unported (CC BY 3.0).
+Confira as condições desta licença em: http://creativecommons.org/licenses/by/3.0/
+
+
+6. Notas adicionais
+-------------------
+
+O Onto.PT foi criado no âmbito do doutoramento de Hugo Gonçalo Oliveira, na Universidade de Coimbra, sob a orientação de Paulo Gomes.
+Até Dezembro de 2012, Hugo Gonçalo Oliveira foi financiado pela FCT, bolsa SFRH/BD/44955/2008.
+
+A utilização do Onto.PT deve ser seguida da referência ao seguinte trabalho:
+
+	Hugo Gonçalo Oliveira & Paulo Gomes.
+	Integrating lexical-semantic knowledge to build a public lexical ontology for Portuguese.
+	In Natural Language Processing and Information Systems, Proceedings of 17h NLDB, LNCS, Groningen, The Netherlands, June 2012.
+	Springer.
+
+Agradecemos que, se utilizar o Onto.PT em algum projecto, nos informe através do endereço hroliv@dei.uc.pt
+
+O Onto.PT pode ser consultado através da rede, utilizando o interface OntoBusca, instalada em:
+http://ontopt.dei.uc.pt/index.php?sec=consultar
+
+Para informações adicionais sobre o projecto, deverá consultar o seu sítio oficial:
+http://ontopt.dei.uc.pt/
+
+Para além de outros recursos, neste sítio poderá encontrar referências para trabalhos acerca da construção do Onto.PT.
+
+Alternativamente, contacte-nos através de hroliv@dei.uc.pt
+
+===============================
+Hugo Gonçalo Oliveira
+Coimbra, 22 de Agosto de 2013

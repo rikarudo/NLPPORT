@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relacoes>
+
+  <grupo nome="SINONIMIA">
+    <no1>SINONIMO</no1>
+    <no2>SINONIMO</no2>    
+    <dir>SINONIMO_N_DE</dir>
+    <inv>SINONIMO_N_DE</inv>
+    
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>SINONIMO_N_DE</dir>
+    </sub>
+    <sub>
+      <cat1>verbo</cat1>
+      <cat2>verbo</cat2>
+      <dir>SINONIMO_V_DE</dir>
+    </sub>
+    <sub>
+      <cat1>adj</cat1>
+      <cat2>adj</cat2>
+      <dir>SINONIMO_ADJ_DE</dir>
+    </sub>
+    <sub>
+      <cat1>adv</cat1>
+      <cat2>adv</cat2>
+      <dir>SINONIMO_ADV_DE</dir>
+    </sub>
+  </grupo>
+
+  <grupo nome="HIPERONIMIA">
+    <no1>HIPERONIMO</no1>
+    <no2>HIPONIMO</no2>
+  
+    <dir>HIPERONIMO_DE</dir>
+    <inv>HIPONIMO_DE</inv>
+    
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>HIPERONIMO_DE</dir>
+      <inv>HIPONIMO_DE</inv>
+    </sub>
+    
+<!--    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>GENERALIZACAO_DE</dir>
+      <inv>ESPECIFICACAO_DE</inv>
+    </sub>-->
+    
+  </grupo>
+  
+  <grupo nome="PARTE">
+    <no1>MERONIMO</no1>
+    <no2>HOLONIMO</no2>
+
+    <dir>PARTE_DE</dir>
+    <inv>TEM_PARTE</inv>
+      
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>PARTE_DE</dir>
+      <inv>TEM_PARTE</inv>
+    </sub>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>adj</cat2>
+      <dir>PARTE_DE_ALGO_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DE_ALGO_QUE_TEM_PARTE</inv>
+    </sub>
+    <sub>
+      <cat1>adj</cat1>
+      <cat2>nome</cat2>
+      <dir>PROPRIEDADE_DE_ALGO_PARTE_DE</dir>
+      <inv>TEM_COMO_PARTE_ALGO_COM_PROPRIEDADE</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="MEMBRO">
+    <no1>MEMBRO</no1>
+  	<no2>INCLUI</no2>
+  	<dir>MEMBRO_DE</dir>
+  	<inv>INCLUI</inv>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>MEMBRO_DE</dir>
+      <inv>INCLUI</inv>
+    </sub>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>adj</cat2>
+      <dir>MEMBRO_DE_ALGO_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DE_ALGO_QUE_INCLUI</inv>
+    </sub>
+    <sub>
+      <cat1>adj</cat1>
+      <cat2>nome</cat2>
+      <dir>PROPRIEDADE_DE_ALGO_MEMBRO_DE</dir>
+      <inv>INCLUI_ALGO_COM_PROPRIEDADE</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="CONTIDO">
+    <no1>CONTIDO</no1>
+  	<no2>CONTEM</no2>
+  	<dir>CONTIDO_EM</dir>
+  	<inv>CONTEM</inv>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>CONTIDO_EM</dir>
+      <inv>CONTEM</inv>
+    </sub>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>adj</cat2>
+      <dir>CONTIDO_EM_ALGO_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DE_ALGO_QUE_CONTEM</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="MATERIAL">
+    <no1>MATERIAL</no1>
+  	<no2>FEITO</no2>
+  	<dir>MATERIAL_DE</dir>
+  	<inv>FEITO_DE</inv>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>MATERIAL_DE</dir>
+      <inv>FEITO_DE</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="FINALIDADE">
+    <no1>FINALIDADE</no1>
+    <no2>MEIO</no2>
+
+    <dir>FINALIDADE_DE</dir>
+    <inv>SERVE_PARA</inv>
+    
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>FAZ_SE_COM</dir>
+      <inv>SERVE_PARA</inv>
+    </sub>    
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>verbo</cat2>
+      <dir>FINALIDADE_DA_ACCAO</dir>
+      <inv>ACCAO_PARA</inv>
+    </sub>    
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>adj</cat2>
+      <dir>FAZ_SE_COM_ALGO_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DO_QUE_SERVE_PARA</inv>
+    </sub>    
+    <sub>
+      <cat1>verbo</cat1>
+      <cat2>nome</cat2>
+      <dir>FINALIDADE_DE</dir>
+      <inv>SERVE_PARA_ACCAO</inv>
+    </sub>
+    <sub>
+      <cat1>verbo</cat1>
+      <cat2>adj</cat2>
+      <dir>FINALIDADE_DE_ALGO_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DO_QUE_SERVE_PARA_ACCAO</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="CAUSA">
+    <no1>CAUSADOR</no1>
+    <no2>RESULTADO</no2>
+
+    <dir>CAUSADOR_DE</dir>
+    <inv>RESULTADO_DE</inv>
+
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>CAUSADOR_DE</dir>
+      <inv>RESULTADO_DE</inv>
+    </sub>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>verbo</cat2>
+      <dir>CAUSADOR_DA_ACCAO</dir>
+      <inv>ACCAO_RESULTADO_DE</inv>
+    </sub>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>adj</cat2>
+      <dir>CAUSADOR_DE_ALGO_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DE_ALGO_RESULTADO_DE</inv>
+    </sub>
+    <sub>
+      <cat1>adj</cat1>
+      <cat2>nome</cat2>
+      <dir>PROPRIEDADE_DE_ALGO_QUE_CAUSA</dir>
+      <inv>RESULTADO_DE_ALGO_COM_PROPRIEDADE</inv>
+    </sub>
+    <sub>
+      <cat1>verbo</cat1>
+      <cat2>nome</cat2>
+      <dir>ACCAO_QUE_CAUSA</dir>
+      <inv>RESULTADO_DA_ACCAO</inv>
+    </sub>
+  </grupo>
+
+  <grupo nome="PRODUTOR">
+	<no1>PRODUTOR</no1>
+    <no2>PRODUTO</no2>
+  	<dir>PRODUTOR_DE</dir>
+  	<inv>PRODUZIDO_POR</inv>
+    
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>PRODUTOR_DE</dir>
+      <inv>PRODUZIDO_POR</inv>
+    </sub>
+    <sub>
+      <cat1>nome</cat1>
+      <cat2>adj</cat2>
+      <dir>PRODUTOR_DE_ALGO_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DE_ALGO_PRODUZIDO_POR</inv>
+    </sub>
+    <sub>
+      <cat1>adj</cat1>
+      <cat2>nome</cat2>
+      <dir>PROPRIEDADE_DE_ALGO_PRODUTOR_DE</dir>
+      <inv>PRODUZIDO_POR_ALGO_COM_PROPRIEDADE</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="MANEIRA">
+    <no1>MANEIRA</no1>
+  	<no2>PELA</no2>
+  	<dir>MANEIRA_DE</dir>
+  	<inv>PELA_MANEIRA</inv>
+    
+    <sub>
+      <cat1>adv</cat1>
+      <cat2>nome</cat2>
+      <dir>MANEIRA_POR_MEIO_DE</dir>
+      <inv>MEIO_PARA_MANEIRA</inv>
+    </sub>
+    <sub>
+      <cat1>adv</cat1>
+      <cat2>adj</cat2>
+      <dir>MANEIRA_COM_PROPRIEDADE</dir>
+      <inv>PROPRIEDADE_DA_MANEIRA</inv>
+    </sub>
+    <sub>
+      <cat1>verbo</cat1>
+      <cat2>adv</cat2>
+      <dir>ACCAO_PARA_MANEIRA</dir>
+      <inv>MANEIRA_RESULTADO_DA_ACCAO</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="MANEIRA_SEM">
+    <no1>MANEIRA</no1>
+    <no2>NAO_PELA</no2>
+    <dir>MANEIRA_SEM</dir>
+    <inv>NAO_HA_NA_MANEIRA</inv>
+    <sub>
+      <cat1>adv</cat1>
+      <cat2>nome</cat2>
+      <dir>MANEIRA_SEM</dir>
+      <inv>NAO_HA_NA_MANEIRA</inv>
+    </sub>
+    <sub>
+      <cat1>adv</cat1>
+      <cat2>verbo</cat2>
+      <dir>MANEIRA_SEM_ACCAO</dir>
+      <inv>ACCAO_NAO_DA_MANEIRA</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="REFERENTE">
+  	<no1>REFERENTE</no1>
+  	<no2>REFERIDO</no2>
+  	<dir>REFERENTE_A</dir>
+  	<inv>REFERIDO_POR</inv>
+	<sub>
+      <cat1>adj</cat1>
+      <cat2>nome</cat2>
+      <dir>DIZ_SE_SOBRE</dir>
+      <inv>REFERIDO_PELO_QUE_É</inv>
+    </sub>
+ 	<sub>
+      <cat1>adj</cat1>
+      <cat2>verbo</cat2>
+      <dir>DIZ_SE_DO_QUE</dir>
+      <inv>FEITO_PELO_QUE_É</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="LOCAL">
+    <no1>LOCAL</no1>
+  	<no2>ORIGINARIO</no2>
+  	<dir>LOCAL_ORIGEM_DE</dir>
+  	<inv>ORIGINARIO_DE</inv>
+  	<sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>LOCAL_ORIGEM_DE</dir>
+      <inv>ORIGINARIO_DE</inv>
+    </sub>
+    <sub>
+	  <cat1>nome</cat1>
+	  <cat2>verbo</cat2>
+	  <dir>LOCAL_ONDE</dir>
+	  <inv>FAZ_SE_EM</inv>
+	</sub>
+  </grupo>
+  
+  <grupo nome="QUALIDADE">
+    <no1>TEM</no1>
+  	<no2>QUALIDADE</no2>
+  	<dir>TEM_QUALIDADE</dir>
+  	<inv>QUALIDADE_DO_QUE_É</inv>
+  	<sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>TEM_QUALIDADE</dir>
+      <inv>QUALIDADE_DE</inv>
+    </sub>
+    <sub>
+      <cat1>adj</cat1>
+      <cat2>nome</cat2>
+      <dir>DEVIDO_A_QUALIDADE</dir>
+      <inv>QUALIDADE_DO_QUE_É</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="ESTADO">
+    <no1>TEM</no1>
+  	<no2>ESTADO</no2>
+  	<dir>TEM_ESTADO</dir>
+  	<inv>ESTADO_DO_QUE_É</inv>
+  	<sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>TEM_ESTADO</dir>
+      <inv>ESTADO_DE</inv>
+    </sub>
+    <sub>
+      <cat1>adj</cat1>
+      <cat2>nome</cat2>
+      <dir>DEVIDO_A_ESTADO</dir>
+      <inv>ESTADO_DO_QUE_É</inv>
+    </sub>
+  </grupo>
+  
+  <grupo nome="ANTONIMIA">
+    <no1>ANTONIMO</no1>
+  	<no2>ANTONIMO</no2>
+  	<dir>ANTONIMO_ADJ_DE</dir>
+  	<inv>ANTONIMO_ADJ_DE</inv>
+  	<sub>
+      <cat1>nome</cat1>
+      <cat2>nome</cat2>
+      <dir>ANTONIMO_N_DE</dir>
+      <inv>ANTONIMO_N_DE</inv>
+    </sub>
+  	<sub>
+      <cat1>verbo</cat1> <!-- "não verbo" ?-->
+      <cat2>verbo</cat2>
+      <dir>ANTONIMO_V_DE</dir>
+      <inv>ANTONIMO_V_DE</inv>
+    </sub>
+    <sub>
+      <cat1>adj</cat1> <!-- "que não" -->
+      <cat2>adj</cat2>
+      <dir>ANTONIMO_ADJ_DE</dir>
+      <inv>ANTONIMO_ADJ_DE</inv>
+    </sub>
+  	<sub>
+      <cat1>adv</cat1>
+      <cat2>adv</cat2>
+      <dir>ANTONIMO_ADV_DE</dir>
+      <inv>ANTONIMO_ADV_DE</inv>
+    </sub>
+  </grupo>
+  
+</relacoes>
